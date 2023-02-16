@@ -20,11 +20,15 @@ app.use(cors());
 
 // routes
 app.use('/api/contacts',contact)
+const path = require('path')
 
 // Home route
 app.get("/", (req, res) => {
-  // res.render("home");
-  res.send("hello from backend")
+  // res.render("home");x
+  app.use(express.static(path.resolve(__dirname,'client')))
+  res.sendFile(path.resolve(__dirname,'client','index.html'))
 });
+
+
 
  module.exports = app
